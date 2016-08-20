@@ -25,10 +25,11 @@ public class main extends javax.swing.JFrame {
      */
     BinaryTree arbol;
     LinkedList lista;
+
     public main() {
         initComponents();
-        arbol=new BinaryTree();
-        lista=new LinkedList();
+        arbol = new BinaryTree();
+        lista = new LinkedList();
     }
 
     /**
@@ -83,38 +84,102 @@ public class main extends javax.swing.JFrame {
 
     private void bLoadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLoadMouseClicked
         try {
-            JFileChooser chooser=new JFileChooser();
-            FileFilter filter=new FileNameExtensionFilter(null,"txt");
+            JFileChooser chooser = new JFileChooser();
+            FileFilter filter = new FileNameExtensionFilter(null, "txt");
             chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             chooser.setFileFilter(filter);
             chooser.setAcceptAllFileFilterUsed(false);
-            if(chooser.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
-                if(chooser.getSelectedFile().getName().endsWith(".txt")){
-                    File archivo=chooser.getSelectedFile();
-                    FileReader in=new FileReader(archivo);
-                    BufferedReader reader=new BufferedReader(in);
+            if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+                if (chooser.getSelectedFile().getName().endsWith(".txt")) {
+                    File archivo = chooser.getSelectedFile();
+                    FileReader in = new FileReader(archivo);
+                    BufferedReader reader = new BufferedReader(in);
                     String line;
-                    TreeNode principal;
-                    while((line=reader.readLine())!=null){
-                        int cont=0;
-                        while(line.charAt(cont)=='\t'){
+                    TreeNode root = null;
+                    while ((line = reader.readLine()) != null) {
+                        int cont = 0;
+                        while (line.charAt(cont) == '\t') {
                             cont++;
                         }
-                        TreeNode novo=new TreeNode(line.substring(cont, line.length()));
-                        if(cont==1){
-                            lista.insert(novo, 0);
+                        if (cont == 1) {
+                            root = new TreeNode(line.substring(cont, line.length()), cont);
+                        } else {
+                            lista.insert(new TreeNode(line.substring(cont, line.length()), cont), lista.length());
+                        }
+
+                        /*if(cont==1){
+                            lista.insert(novo,cont, 0);
+                        }else if(cont==2){
+                            novo.setFather(lista.get(0));
+                            principal=novo;
+                            lista.insert(novo,cont, 1);
                         }
                         System.out.println(cont+" tabs");
-                        System.out.println("----------------------------------");
+                        System.out.println("----------------------------------");*/
                     }
-                }else{
+
+                    create(root, lista);
+                    
+                    arbol.insert(root);
+                    for (int i = 0; i < lista.length(); i++) {
+                        arbol.insert(lista.get(i));
+                    }
+                    for (int k = 0; k < lista.length(); k++) {
+                        System.out.println("k=" + k + ", " + lista.get(k).getData() + " - Padre: " + lista.get(k).getFather().getData());
+                    }
+                    arbol.print(root);
+                } else {
                     JOptionPane.showMessageDialog(this, "Archivo invalido!");
                 }
             }
-        } catch (IOException E) {
-
+        } catch (IOException | NullPointerException E) {
+            JOptionPane.showMessageDialog(this, "Ocurrió un error al cargar los datos");
         }
     }//GEN-LAST:event_bLoadMouseClicked
+
+    public void create(TreeNode principal, LinkedList hijos) {
+        LinkedList tmp = new LinkedList();
+
+        for (int i = 0; i < hijos.length(); i++) {
+            int dif = hijos.get(i).getTabs() - principal.getTabs();
+            if (dif == 1) {
+                hijos.get(i).setFather(principal);
+                //System.out.println(hijos.get(i).getData()+", Padre: "+hijos.get(i).getFather().getData());
+            } else {
+                TreeNode nP = null;
+                for (int j = 0; j < i; j++) {
+                    if (hijos.get(i).getTabs() - hijos.get(j).getTabs() == 1) {
+                        nP = hijos.get(j);
+                    }
+                }
+                if (nP != null && hijos.get(i).getFather() == null) {
+                    System.out.print(i + ", NP:" + nP.getData() + "\t");
+                    hijos.get(i).setFather(hijos.get(hijos.indexOf(nP)));
+                    System.out.println(i + "," + hijos.get(i).getData() + ", Padre: " + hijos.get(i).getFather().getData());
+                }
+
+            }
+
+            //System.out.println("---------------------------------");
+        }
+        System.out.println("----------------------------------------");
+
+        //if(tmp.length()>0)
+        //create(nP,tmp);
+        /*else if(dif!=0){
+                TreeNode nP=hijos.get(i);
+                boolean sons=false;
+                LinkedList tmp=new LinkedList();
+                int nCont=i;
+                while(!sons){
+                    if(hijos.get(nCont).getTabs()-nP.getTabs()==1)
+                        tmp.insert(hijos.get(nCont), tmp.length());
+                    else
+                        sons=true;
+                }
+                
+            }*/
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

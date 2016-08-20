@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto2ed;
 
-/**
- *
- * @author USUARIO-PC
- */
 public abstract class ADTList {
     protected class Node{
         protected Node next,prev;
@@ -17,16 +8,20 @@ public abstract class ADTList {
         Node(){
             next=prev=null;
             data=null;
+
         }
         
         Node(TreeNode data){
             this.data=data;
             next=prev=null;
+
         }
         
         public TreeNode getData(){
             return this.data;
         }
+        
+        
         
         public Node getNext(){
             return next;
@@ -40,14 +35,15 @@ public abstract class ADTList {
             this.data=data;
         }
         
+
+        
         public void setNext(Node next){
             this.next=next;
         }
         
         public void setPrev(Node prev){
             this.prev=prev;
-        }
-        
+        } 
     }
     
     protected int size;

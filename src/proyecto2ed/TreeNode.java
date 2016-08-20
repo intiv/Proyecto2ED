@@ -9,10 +9,12 @@ public class TreeNode {
 
     private TreeNode father, leftSon, rightBrother;
     private String data;
+    private int tabs;
 
-    TreeNode(String data) {
+    TreeNode(String data, int tabs) {
         this.data = data;
         father = leftSon = rightBrother = null;
+        this.tabs = tabs;
     }
 
     public TreeNode getFather() {
@@ -22,7 +24,7 @@ public class TreeNode {
     public void setFather(TreeNode father) {
         this.father = father;
     }
-    
+
     public TreeNode getLeftSon() {
         return leftSon;
     }
@@ -31,7 +33,7 @@ public class TreeNode {
         this.leftSon = leftSon;
         leftSon.setFather(this);
     }
-    
+
     public TreeNode getRightBrother() {
         return rightBrother;
     }
@@ -40,11 +42,19 @@ public class TreeNode {
         this.rightBrother = rightBrother;
     }
 
-    public void setData(String data){
-        this.data=data;
+    public void setData(String data) {
+        this.data = data;
     }
-    
-    public String getData(){
+
+    public String getData() {
         return this.data;
-    } 
+    }
+
+    public int getTabs() {
+        return this.tabs;
+    }
+
+    public void setTabs(int tabs) {
+        this.tabs = tabs;
+    }
 }

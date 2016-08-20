@@ -33,13 +33,12 @@ public class BinaryTree {
                             }
                         }
                         hijo.setRightBrother(node);
-                        hijo.setFather(tmp);
                     }else{
                         hijo.setRightBrother(node);
-                        hijo.setFather(tmp);
                     }
                 }
             }
+            
         }
     }
 
@@ -63,8 +62,11 @@ public class BinaryTree {
     }
 
     public void print(TreeNode node) {
+        for (int i = 0; i < node.getTabs(); i++) {
+                System.out.print("\t");
+        }
         if(node.getFather()!=null){
-            System.out.print("Antecesor : "+node.getFather().getData()+ " - ");
+            System.out.print("Padre: "+node.getFather().getData()+ " - ");
         }else{
             System.out.print("Raiz - ");
         }
