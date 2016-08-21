@@ -14,15 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author USUARIO-PC
- */
 public class main extends javax.swing.JFrame {
 
-    /**
-     * Creates new form main
-     */
     BinaryTree arbol;
     LinkedList lista;
 
@@ -41,12 +34,64 @@ public class main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jdTree = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taTree = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        bClose = new javax.swing.JButton();
         bLoad = new javax.swing.JButton();
         bExit = new javax.swing.JButton();
+        bDraw = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        taTree.setEditable(false);
+        taTree.setColumns(20);
+        taTree.setRows(5);
+        jScrollPane1.setViewportView(taTree);
+
+        jLabel2.setText("Arbol");
+
+        bClose.setText("Cerrar");
+        bClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bCloseMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jdTreeLayout = new javax.swing.GroupLayout(jdTree.getContentPane());
+        jdTree.getContentPane().setLayout(jdTreeLayout);
+        jdTreeLayout.setHorizontalGroup(
+            jdTreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdTreeLayout.createSequentialGroup()
+                .addGroup(jdTreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdTreeLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(jdTreeLayout.createSequentialGroup()
+                        .addGroup(jdTreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jdTreeLayout.createSequentialGroup()
+                                .addGap(298, 298, 298)
+                                .addComponent(jLabel2))
+                            .addGroup(jdTreeLayout.createSequentialGroup()
+                                .addGap(297, 297, 297)
+                                .addComponent(bClose)))
+                        .addGap(0, 302, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jdTreeLayout.setVerticalGroup(
+            jdTreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdTreeLayout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bClose)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        bLoad.setText("Cargar Datos");
+        bLoad.setText("Cargar Datos de txt");
         bLoad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bLoadMouseClicked(evt);
@@ -54,29 +99,56 @@ public class main extends javax.swing.JFrame {
         });
 
         bExit.setText("Salir");
+        bExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bExitMouseClicked(evt);
+            }
+        });
+
+        bDraw.setText("Dibujar Arbol");
+        bDraw.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bDrawMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 3, 24)); // NOI18N
+        jLabel1.setText("Organigrama a Arbol");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 46, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(bLoad))
+                        .addGap(142, 142, 142)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(bDraw, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(275, 275, 275)
-                        .addComponent(bExit)))
-                .addContainerGap(272, Short.MAX_VALUE))
+                        .addGap(179, 179, 179)
+                        .addComponent(bExit, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(bLoad)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
-                .addComponent(bExit)
-                .addGap(55, 55, 55))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1)
+                .addGap(29, 29, 29)
+                .addComponent(bLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bDraw, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(bExit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -84,7 +156,8 @@ public class main extends javax.swing.JFrame {
 
     private void bLoadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bLoadMouseClicked
         try {
-            JFileChooser chooser = new JFileChooser();
+            String dir = System.getProperty("user.home");
+            JFileChooser chooser = new JFileChooser(dir + "/Desktop");
             FileFilter filter = new FileNameExtensionFilter(null, "txt");
             chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             chooser.setFileFilter(filter);
@@ -106,28 +179,15 @@ public class main extends javax.swing.JFrame {
                         } else {
                             lista.insert(new TreeNode(line.substring(cont, line.length()), cont), lista.length());
                         }
-
-                        /*if(cont==1){
-                            lista.insert(novo,cont, 0);
-                        }else if(cont==2){
-                            novo.setFather(lista.get(0));
-                            principal=novo;
-                            lista.insert(novo,cont, 1);
-                        }
-                        System.out.println(cont+" tabs");
-                        System.out.println("----------------------------------");*/
                     }
-
                     create(root, lista);
-                    
                     arbol.insert(root);
                     for (int i = 0; i < lista.length(); i++) {
                         arbol.insert(lista.get(i));
                     }
-                    for (int k = 0; k < lista.length(); k++) {
-                        System.out.println("k=" + k + ", " + lista.get(k).getData() + " - Padre: " + lista.get(k).getFather().getData());
-                    }
-                    arbol.print(root);
+                    reader.close();
+                    in.close();
+                    JOptionPane.showMessageDialog(this, "Los datos se cargan con exito al arbol!");
                 } else {
                     JOptionPane.showMessageDialog(this, "Archivo invalido!");
                 }
@@ -136,6 +196,31 @@ public class main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ocurrió un error al cargar los datos");
         }
     }//GEN-LAST:event_bLoadMouseClicked
+
+    private void bDrawMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bDrawMouseClicked
+        if (arbol.getRoot() != null) {
+            jdTree.setModal(true);
+            jdTree.setLocationRelativeTo(this);
+            jdTree.pack();
+            taTree.setText("");
+            arbol.print(arbol.getRoot(), taTree);
+            jdTree.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe cargar datos validos de un archivo de texto para poder dibujar el arbol!");
+        }
+    }//GEN-LAST:event_bDrawMouseClicked
+
+    private void bCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bCloseMouseClicked
+        taTree.setText("");
+        jdTree.setModal(false);
+        jdTree.dispose();
+    }//GEN-LAST:event_bCloseMouseClicked
+
+    private void bExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bExitMouseClicked
+        arbol=null;
+        lista=null;
+        System.exit(0);
+    }//GEN-LAST:event_bExitMouseClicked
 
     public void create(TreeNode principal, LinkedList hijos) {
         LinkedList tmp = new LinkedList();
@@ -153,32 +238,11 @@ public class main extends javax.swing.JFrame {
                     }
                 }
                 if (nP != null && hijos.get(i).getFather() == null) {
-                    System.out.print(i + ", NP:" + nP.getData() + "\t");
                     hijos.get(i).setFather(hijos.get(hijos.indexOf(nP)));
-                    System.out.println(i + "," + hijos.get(i).getData() + ", Padre: " + hijos.get(i).getFather().getData());
                 }
-
             }
-
-            //System.out.println("---------------------------------");
         }
-        System.out.println("----------------------------------------");
 
-        //if(tmp.length()>0)
-        //create(nP,tmp);
-        /*else if(dif!=0){
-                TreeNode nP=hijos.get(i);
-                boolean sons=false;
-                LinkedList tmp=new LinkedList();
-                int nCont=i;
-                while(!sons){
-                    if(hijos.get(nCont).getTabs()-nP.getTabs()==1)
-                        tmp.insert(hijos.get(nCont), tmp.length());
-                    else
-                        sons=true;
-                }
-                
-            }*/
     }
 
     public static void main(String args[]) {
@@ -214,7 +278,14 @@ public class main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bClose;
+    private javax.swing.JButton bDraw;
     private javax.swing.JButton bExit;
     private javax.swing.JButton bLoad;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JDialog jdTree;
+    private javax.swing.JTextArea taTree;
     // End of variables declaration//GEN-END:variables
 }
