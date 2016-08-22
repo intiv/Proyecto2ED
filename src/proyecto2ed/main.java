@@ -174,7 +174,7 @@ public class main extends javax.swing.JFrame {
                         while (line.charAt(cont) == '\t') {
                             cont++;
                         }
-                        if (cont == 1) {
+                        if (cont == 0) {
                             root = new TreeNode(line.substring(cont, line.length()), cont);
                         } else {
                             lista.insert(new TreeNode(line.substring(cont, line.length()), cont), lista.length());
